@@ -1,307 +1,1653 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shaharukh Khan | Data Scientist</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Inter -->
+    <title>Shaharukh Khan — Applied Scientist-II | Portfolio</title>
+    <meta name="description" content="Personal research portfolio of Shaharukh Khan, Applied Scientist-II at Amazon. Specializing in Multimodal VLMs, Guardrails, Generative AI, and Indic NLP.">
+    <meta name="author" content="Shaharukh Khan">
+
+    <!-- Fonts: FK Grotesk Fallbacks (Plus Jakarta Sans & Inter), Editorial Newsreader, JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Custom Styles & Tailwind Config -->
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
     <style>
-        /* Custom scrollbar for a more modern look (optional) */
-        ::-webkit-scrollbar {
-            width: 8px;
+        :root {
+            --font-sans: 'FK Grotesk', 'FK Grotesk Neue', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --font-display: 'FK Grotesk', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'PPLX Serif', 'Newsreader', 'Charter', Georgia, serif;
+            --font-mono: 'Berkeley Mono', 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+
+            /* Perplexity Chat Authentic Dark Theme */
+            --bg-body: #191a1a;            /* Authentic Perplexity matte charcoal/obsidian canvas */
+            --bg-sidebar: #141515;         /* Seamless dark sidebar */
+            --bg-card: #202222;            /* Perplexity chat bubbles & source cards surface */
+            --bg-card-hover: #262929;      /* Elevated card on hover */
+            --bg-input: #202222;           /* Perplexity query input field */
+            --bg-input-focus: #252828;
+            --bg-tag: rgba(32, 128, 141, 0.15); /* Brand teal wash */
+            --bg-pill: #252828;            /* Suggestion chips */
+            --bg-pill-hover: #2e3232;
+            --bg-badge: #2a2d2d;
+
+            --border-subtle: #2b2e2e;      /* Subtle hairline borders */
+            --border-medium: #353939;      /* Card & input borders */
+            --border-accent: rgba(32, 128, 141, 0.45);
+
+            --text-primary: #ececec;       /* Perplexity soft off-white text */
+            --text-secondary: #b4b4af;     /* Warm muted text */
+            --text-muted: #787b7a;         /* Tertiary neutral gray */
+
+            /* Perplexity Signature Teal */
+            --accent: #20808d;             /* Official Perplexity brand teal */
+            --accent-bright: #22b8cd;      /* High-contrast cyan highlight */
+            --accent-glow: rgba(32, 128, 141, 0.25);
+            --accent-soft: rgba(32, 128, 141, 0.12);
+
+            --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.25);
+            --shadow-glow: 0 0 0 2px rgba(32, 128, 141, 0.35);
+            --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        ::-webkit-scrollbar-track {
-            background: #1a202c;
+
+        [data-theme="light"] {
+            /* Perplexity Chat Authentic Light Theme (Warm Alabaster) */
+            --bg-body: #fbfaf4;            /* Iconic Perplexity warm alabaster canvas */
+            --bg-sidebar: #f5f4ed;         /* Warm parchment sidebar */
+            --bg-card: #ffffff;            /* Pure white card */
+            --bg-card-hover: #f9f8f2;      /* Gentle warm hover */
+            --bg-input: #ffffff;           /* Crisp input */
+            --bg-input-focus: #ffffff;
+            --bg-tag: rgba(1, 106, 113, 0.08);
+            --bg-pill: #ebeae2;
+            --bg-pill-hover: #e0ded4;
+            --bg-badge: #f0eee5;
+
+            --border-subtle: #eae9e0;
+            --border-medium: #dad9ce;
+            --border-accent: rgba(1, 106, 113, 0.35);
+
+            --text-primary: #191c1b;       /* Deep slate/charcoal text */
+            --text-secondary: #525955;     /* Warm body text */
+            --text-muted: #7b837f;         /* Tertiary warm gray */
+
+            --accent: #016a71;             /* Perplexity light mode deep teal */
+            --accent-bright: #0c828b;
+            --accent-glow: rgba(1, 106, 113, 0.2);
+            --accent-soft: rgba(1, 106, 113, 0.08);
+
+            --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+            --shadow-glow: 0 0 0 2px rgba(1, 106, 113, 0.25);
         }
-        ::-webkit-scrollbar-thumb {
-            background: #4a5568;
-            border-radius: 10px;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #718096;
-        }
-        /* Define custom font family */
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-sans);
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
-        /* Style for scroll-activated animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+        /* ==========================================================================
+           Perplexity Sidebar Navigation
+           ========================================================================== */
+        .px-sidebar {
+            width: 250px;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-subtle);
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            transition: var(--transition);
         }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
+
+        .px-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
         }
-    </style>
-    <script>
-        // Customizing Tailwind theme if needed
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'brand-primary': '#00A8E8',
-                        'brand-secondary': '#007EA7',
-                        'dark-bg': '#0D1117',
-                        'dark-card': '#161B22',
-                        'dark-border': '#30363D',
-                        'light-text': '#C9D1D9',
-                        'medium-text': '#8B949E',
-                    }
-                }
+
+        .px-logo-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bright) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px var(--accent-glow);
+        }
+
+        .px-brand-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .px-brand-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .px-nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .px-nav-item a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding: 0.6rem 0.85rem;
+            border-radius: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .px-nav-item a:hover,
+        .px-nav-item.active a {
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+        }
+
+        .px-nav-item a i {
+            font-size: 0.95rem;
+            width: 18px;
+            color: var(--accent);
+        }
+
+        .px-nav-badge {
+            font-family: var(--font-mono);
+            font-size: 0.725rem;
+            background: var(--bg-pill);
+            color: var(--text-muted);
+            padding: 0.15rem 0.45rem;
+            border-radius: 9999px;
+        }
+
+        .px-sidebar-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .btn-resume {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bright) 100%);
+            color: #ffffff;
+            padding: 0.65rem 1rem;
+            border-radius: 0.6rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: var(--shadow-glow);
+            transition: var(--transition);
+        }
+
+        .btn-resume:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+
+        .theme-toggle-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.4rem 0.5rem;
+            font-size: 0.825rem;
+            color: var(--text-muted);
+        }
+
+        .btn-toggle-theme {
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            padding: 0.35rem 0.75rem;
+            border-radius: 0.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.775rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-toggle-theme:hover {
+            background: var(--bg-pill-hover);
+        }
+
+        /* ==========================================================================
+           Main Content Canvas (Perplexity Feed View)
+           ========================================================================== */
+        .px-main {
+            margin-left: 250px;
+            flex: 1;
+            padding: 2.5rem 3.5rem 5rem;
+            max-width: 1080px;
+        }
+
+        /* Perplexity Header & Search Box Hero */
+        .px-hero {
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-profile-row {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .profile-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .hero-title-group h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .badge-status {
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: var(--bg-tag);
+            color: var(--accent);
+            border: 1px solid var(--border-accent);
+            padding: 0.2rem 0.65rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .hero-role-text {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-top: 0.2rem;
+        }
+
+        /* Perplexity Search Bar Component */
+        .search-container {
+            background-color: var(--bg-input);
+            border: 1.5px solid var(--border-medium);
+            border-radius: 1rem;
+            padding: 0.85rem 1.25rem;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .search-container:focus-within {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .search-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .search-sparkle {
+            color: var(--accent);
+            font-size: 1.15rem;
+        }
+
+        .search-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-tags-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.85rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .search-tag-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .prompt-pill {
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.65rem;
+            border-radius: 9999px;
+            font-size: 0.785rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .prompt-pill:hover {
+            background: var(--bg-pill-hover);
+            color: var(--accent);
+            border-color: var(--border-accent);
+        }
+
+        /* Perplexity Interactive AI Answer Box */
+        .ai-answer-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-accent);
+            border-radius: 1rem;
+            padding: 1.5rem 1.75rem;
+            margin-top: 1.5rem;
+            box-shadow: var(--shadow-card);
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .ai-answer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.85rem;
+        }
+
+        .ai-answer-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-close-answer {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .ai-answer-body {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-family: var(--font-sans);
+        }
+
+        .ai-answer-body strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .ai-answer-body code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-pill);
+            padding: 0.15rem 0.35rem;
+            border-radius: 0.3rem;
+            color: var(--accent);
+        }
+
+        .cite-badge {
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--bg-tag);
+            padding: 0.1rem 0.45rem;
+            border-radius: 9999px;
+            border: 1px solid var(--border-accent);
+            text-decoration: none;
+            margin: 0 0.2rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: 0.15em;
+            transition: var(--transition);
+        }
+
+        .cite-badge:hover {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        /* ==========================================================================
+           Perplexity Sources Carousel
+           ========================================================================== */
+        .sources-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-label {
+            font-size: 0.825rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sources-carousel {
+            display: flex;
+            gap: 0.75rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            scrollbar-width: thin;
+        }
+
+        .source-card {
+            flex: 0 0 170px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 0.75rem;
+            padding: 0.85rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .source-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-accent);
+            transform: translateY(-2px);
+        }
+
+        .source-domain {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.725rem;
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+        }
+
+        .source-title {
+            font-size: 0.825rem;
+            font-weight: 600;
+            line-height: 1.35;
+            color: var(--text-secondary);
+        }
+
+        /* ==========================================================================
+           Feed Sections (Experience, Publications, Skills)
+           ========================================================================== */
+        .feed-section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 2rem;
+        }
+
+        .feed-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 0.65rem;
+            border-bottom: 1.5px solid var(--border-subtle);
+            margin-bottom: 1.5rem;
+        }
+
+        .feed-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .feed-title i {
+            color: var(--accent);
+            font-size: 1.15rem;
+        }
+
+        /* Experience Cards */
+        .card-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 1rem;
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 1.25rem;
+            transition: var(--transition);
+        }
+
+        .card-item:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-medium);
+            box-shadow: var(--shadow-card);
+            transform: translateY(-1px);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-role {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .card-company {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 0.15rem;
+        }
+
+        .card-date {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: var(--bg-pill);
+            padding: 0.25rem 0.65rem;
+            border-radius: 9999px;
+        }
+
+        .card-date.current {
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .card-bullets {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .card-bullets li {
+            position: relative;
+            padding-left: 1.35rem;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        .card-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0.25rem;
+            top: -0.05rem;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .card-bullets strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .tag-cluster {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 1rem;
+            padding-top: 0.85rem;
+            border-top: 1px dashed var(--border-subtle);
+        }
+
+        .tag-pill {
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 0.15rem 0.55rem;
+            border-radius: 0.35rem;
+        }
+
+        /* Publications Feed */
+        .pub-row {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 0.85rem;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1.25rem;
+            transition: var(--transition);
+        }
+
+        .pub-row:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-accent);
+            transform: translateY(-1px);
+        }
+
+        .pub-details {
+            flex: 1;
+        }
+
+        .pub-title-link {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            transition: color 0.15s ease;
+        }
+
+        .pub-title-link:hover {
+            color: var(--accent);
+        }
+
+        .pub-title-link i {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .pub-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-top: 0.4rem;
+            font-size: 0.8rem;
+        }
+
+        .badge-venue {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.55rem;
+            border-radius: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .badge-venue.iclr { background: rgba(129, 140, 248, 0.15); color: #818cf8; border: 1px solid rgba(129, 140, 248, 0.3); }
+        .badge-venue.aaai { background: rgba(244, 63, 94, 0.15); color: #f43f5e; border: 1px solid rgba(244, 63, 94, 0.3); }
+        .badge-venue.amlc { background: rgba(34, 211, 238, 0.15); color: #22d3ee; border: 1px solid rgba(34, 211, 238, 0.3); }
+        .badge-venue.cvpr { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-venue.neurips { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .badge-venue.emnlp { background: rgba(6, 182, 212, 0.15); color: #06b6d4; border: 1px solid rgba(6, 182, 212, 0.3); }
+        .badge-venue.arxiv { background: rgba(168, 85, 247, 0.15); color: #a855f7; border: 1px solid rgba(168, 85, 247, 0.3); }
+
+        .pub-workshop-info {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .skill-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 0.85rem;
+            padding: 1.25rem;
+        }
+
+        .skill-box-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-box-title i {
+            color: var(--accent);
+        }
+
+        .skill-tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .skill-chip {
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.35rem;
+        }
+
+        .skill-chip.featured {
+            color: var(--accent);
+            background: var(--bg-tag);
+            border-color: var(--border-accent);
+            font-weight: 600;
+        }
+
+        /* Mobile Hamburger & Responsive */
+        .mobile-header-bar {
+            display: none;
+            padding: 1rem;
+            background: var(--bg-sidebar);
+            border-bottom: 1px solid var(--border-subtle);
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        @media (max-width: 900px) {
+            .mobile-header-bar {
+                display: flex;
+            }
+
+            .px-sidebar {
+                transform: translateX(-100%);
+                top: 60px;
+            }
+
+            .px-sidebar.open {
+                transform: translateX(0);
+            }
+
+            .px-main {
+                margin-left: 0;
+                padding: 5.5rem 1.25rem 3rem;
+            }
+
+            .hero-profile-row {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
-    </script>
+    
+        /* Perplexity Chat Button & Details */
+        .btn-new-thread {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-medium);
+            color: var(--text-primary);
+            padding: 0.55rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.825rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 1.25rem;
+            width: 100%;
+            transition: var(--transition);
+        }
+
+        .btn-new-thread:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent);
+            color: var(--accent-bright);
+        }
+
+        .btn-new-thread i {
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
+
+        .search-submit-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: none;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px var(--accent-glow);
+        }
+
+        .search-submit-btn:hover {
+            filter: brightness(1.15);
+            transform: scale(1.05);
+        }
+
+        .ai-answer-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .px-action-btn {
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 0.3rem 0.65rem;
+            border-radius: 0.45rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: var(--transition);
+        }
+
+        .px-action-btn:hover {
+            background: var(--bg-pill-hover);
+            color: var(--text-primary);
+            border-color: var(--border-medium);
+        }
+
+        .ai-answer-asterisk {
+            color: var(--accent);
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .source-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.4rem;
+        }
+
+        .source-index-badge {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            width: 17px;
+            height: 17px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+    </style>
 </head>
-<body class="bg-dark-bg text-light-text antialiased">
+<body>
 
-    <!-- Header -->
-    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-dark-bg/80 backdrop-blur-sm">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#hero" class="text-xl font-bold text-white">Shaharukh Khan</a>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#about" class="text-medium-text hover:text-brand-primary transition">About</a>
-                <a href="#experience" class="text-medium-text hover:text-brand-primary transition">Experience</a>
-                <a href="#projects" class="text-medium-text hover:text-brand-primary transition">Projects</a>
-                <a href="#publications" class="text-medium-text hover:text-brand-primary transition">Publications</a>
-                <a href="#contact" class="text-medium-text hover:text-brand-primary transition">Contact</a>
-            </nav>
-            <button id="mobile-menu-button" class="md:hidden text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
+    <!-- Mobile Header -->
+    <div class="mobile-header-bar">
+        <div class="px-brand" style="padding: 0; margin: 0;">
+            <div class="px-logo-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14"/></svg>
+            </div>
+            <div>
+                <div class="px-brand-title">Shaharukh Khan</div>
+                <div class="px-brand-sub">Applied Scientist-II</div>
+            </div>
+        </div>
+        <button id="menuToggleBtn" style="background: transparent; border: none; color: var(--text-primary); font-size: 1.25rem; cursor: pointer;">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+
+    <!-- Perplexity Left Navigation Sidebar -->
+    <aside class="px-sidebar" id="sidebar">
+        <div>
+            <a href="#" class="px-brand">
+                <div class="px-logo-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14"/></svg>
+                </div>
+                <div>
+                    <div class="px-brand-title">Shaharukh Khan</div>
+                    <div class="px-brand-sub">Amazon Alexa+ • IITK</div>
+                </div>
+            </a>
+
+            <button class="btn-new-thread" id="newThreadBtn" title="Start new search thread">
+                <i class="fa-solid fa-plus"></i>
+                <span>New Thread</span>
             </button>
+
+            <ul class="px-nav-list">
+                <li class="px-nav-item active">
+                    <a href="#searchSection"><i class="fa-solid fa-magnifying-glass"></i> <span>Search</span></a>
+                </li>
+                <li class="px-nav-item">
+                    <a href="#experience"><i class="fa-solid fa-briefcase"></i> <span>Experience</span> <span class="px-nav-badge">5</span></a>
+                </li>
+                <li class="px-nav-item">
+                    <a href="#publications"><i class="fa-solid fa-book-bookmark"></i> <span>Publications</span> <span class="px-nav-badge">8</span></a>
+                </li>
+                <li class="px-nav-item">
+                    <a href="#skills"><i class="fa-solid fa-microchip"></i> <span>Technical Skills</span></a>
+                </li>
+                <li class="px-nav-item">
+                    <a href="#education"><i class="fa-solid fa-graduation-cap"></i> <span>Education</span></a>
+                </li>
+            </ul>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a href="#about" class="block py-2 px-6 text-medium-text hover:bg-dark-card hover:text-brand-primary">About</a>
-            <a href="#experience" class="block py-2 px-6 text-medium-text hover:bg-dark-card hover:text-brand-primary">Experience</a>
-            <a href="#projects" class="block py-2 px-6 text-medium-text hover:bg-dark-card hover:text-brand-primary">Projects</a>
-            <a href="#publications" class="block py-2 px-6 text-medium-text hover:bg-dark-card hover:text-brand-primary">Publications</a>
-            <a href="#contact" class="block py-2 px-6 text-medium-text hover:bg-dark-card hover:text-brand-primary">Contact</a>
+
+        <div class="px-sidebar-bottom">
+            <a href="Shaharukh_Khan_Resume.pdf" target="_blank" class="btn-resume" title="Download 1-page PDF Resume">
+                <i class="fa-solid fa-file-pdf"></i>
+                <span>Download Resume</span>
+            </a>
+
+            <div class="theme-toggle-row">
+                <span>Theme</span>
+                <button class="btn-toggle-theme" id="themeToggleBtn">
+                    <i class="fa-solid fa-sun" id="themeIcon"></i>
+                    <span id="themeText">Dark</span>
+                </button>
+            </div>
         </div>
-    </header>
+    </aside>
 
-    <main class="container mx-auto px-6">
+    <!-- Perplexity Main Canvas -->
+    <main class="px-main">
 
-        <!-- Hero Section -->
-        <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center pt-20">
-            <!-- IMPORTANT: Replace this placeholder URL with the actual path to your avatar image, e.g., './images/your-photo.jpg' -->
-            <img src="./images/avatar1.jpg"
-                 alt="Shaharukh Khan" 
-                 class="w-40 h-41 rounded-full mb-6 border-4 border-dark-border shadow-lg"
-                 onerror="this.onerror=null;this.src='https://placehold.co/160x160/161B22/C9D1D9?text=SK';">
-            <h1 class="text-4xl md:text-6xl font-bold text-white">Shaharukh Khan</h1>
-            <p class="mt-4 text-xl md:text-2xl text-brand-primary">Data Scientist at Krutrim</p>
-            <p class="mt-2 max-w-2xl text-medium-text">Bridging language and vision to advance AI accessibility for Indian languages.</p>
-            <div class="mt-8 flex space-x-6">
-                <a href="https://www.linkedin.com/in/shaharukh-khan-a704188a/" target="_blank" rel="noopener noreferrer" class="text-medium-text hover:text-white transition" aria-label="Linkedin">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-  <path fill-rule="evenodd" d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8.75h5v14.25H0V8.75zm7.5 0h4.786v1.953h.069c.666-1.263 2.296-2.594 4.726-2.594 5.057 0 5.992 3.327 5.992 7.651v8.24h-5v-7.297c0-1.74-.03-3.979-2.425-3.979-2.429 0-2.8 1.892-2.8 3.848v7.428h-5V8.75z" clip-rule="evenodd" />
-</svg>
+        <!-- Hero & Profile Header -->
+        <section class="px-hero" id="searchSection">
+            <div class="hero-profile-row">
+                <img src="images/avatar1.jpg" alt="Shaharukh Khan" class="profile-avatar" onerror="this.onerror=null;this.src='images/avatar.jpg';">
+                <div class="hero-title-group">
+                    <h1>
+                        <span>Shaharukh Khan</span>
+                        <span class="badge-status"><i class="fa-solid fa-bolt"></i> Amazon Alexa+</span>
+                        <span class="badge-status" style="color: var(--text-muted); border-color: var(--border-subtle);"><i class="fa-solid fa-location-dot"></i> Bangalore, India</span>
+                    </h1>
+                    <p class="hero-role-text">Applied Scientist-II @ Amazon • Multimodal VLMs, Guardrails & Generative AI • IIT Kanpur</p>
+                </div>
+            </div>
+
+            <!-- Perplexity Style Search Bar -->
+            <div class="search-container">
+                <div class="search-input-wrapper">
+                    <span class="search-sparkle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14"/></svg>
+                    </span>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Ask anything about Shaharukh's research, models, or experience..." autocomplete="off">
+                    <button class="search-submit-btn" id="searchSubmitBtn" title="Search">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </button>
+                </div>
+                <div class="search-tags-row">
+                    <span class="search-tag-label">Suggestions:</span>
+                    <button class="prompt-pill" data-query="amazon">⚡ Alexa+ Qwen3-Guard</button>
+                    <button class="prompt-pill" data-query="vlm">🌐 Chitrarth VLM</button>
+                    <button class="prompt-pill" data-query="papers">📚 8 Research Papers</button>
+                    <button class="prompt-pill" data-query="safety">🛡️ Guardrails & Agents</button>
+                    <button class="prompt-pill" data-query="iitk">🎓 IIT Kanpur Alum</button>
+                </div>
+            </div>
+
+            <!-- Interactive AI Answer Synthesis Box -->
+            <div class="ai-answer-card" id="aiAnswerCard">
+                <div class="ai-answer-header">
+                    <div class="ai-answer-title">
+                        <span class="ai-answer-asterisk">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14"/></svg>
+                        </span>
+                        <span id="answerQueryTitle">Synthesized Answer</span>
+                    </div>
+                    <div class="ai-answer-actions">
+                        <button class="px-action-btn" id="copyAnswerBtn" title="Copy answer text"><i class="fa-regular fa-copy"></i> <span>Copy</span></button>
+                        <button class="btn-close-answer" id="closeAnswerBtn" title="Close answer"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                </div>
+                <div class="ai-answer-body" id="answerBody"></div>
+            </div>
+        </section>
+
+        <!-- Perplexity Sources Grid -->
+        <section class="sources-section">
+            <div class="section-label">
+                <i class="fa-solid fa-layer-group" style="color: var(--accent);"></i>
+                <span>Primary Sources & Foundations</span>
+            </div>
+            <div class="sources-carousel">
+                <a href="#experience" class="source-card">
+                    <div class="source-card-top">
+                        <div class="source-domain"><i class="fa-brands fa-amazon" style="color: #f59e0b;"></i> amazon.com</div>
+                        <span class="source-index-badge">1</span>
+                    </div>
+                    <div class="source-title">Applied Scientist-II • Alexa+ Qwen3-Guard</div>
                 </a>
-                <a href="https://twitter.com/shahrukhkhan7025" target="_blank" rel="noopener noreferrer" class="text-medium-text hover:text-white transition" aria-label="Twitter">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/></svg>
+                <a href="https://openreview.net/forum?id=LmJoLn04iL" target="_blank" class="source-card">
+                    <div class="source-card-top">
+                        <div class="source-domain"><i class="fa-solid fa-scroll" style="color: #818cf8;"></i> openreview.net</div>
+                        <span class="source-index-badge">2</span>
+                    </div>
+                    <div class="source-title">ICLR 2026 • IndicVisionBench VLM</div>
                 </a>
-                <a href="https://github.com/shaharukhkhan4350" target="_blank" rel="noopener noreferrer" class="text-medium-text hover:text-white transition" aria-label="GitHub">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
+                <a href="https://ojs.aaai.org/index.php/AAAI/article/view/40524" target="_blank" class="source-card">
+                    <div class="source-card-top">
+                        <div class="source-domain"><i class="fa-solid fa-book" style="color: #f43f5e;"></i> aaai.org</div>
+                        <span class="source-index-badge">3</span>
+                    </div>
+                    <div class="source-title">AAAI 2026 • BhashaKritika Synthetic Data</div>
                 </a>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-20 md:py-32 reveal">
-            <h2 class="text-3xl font-bold text-center text-white mb-12">About Me</h2>
-            <div class="grid md:grid-cols-5 gap-12 items-center">
-                <div class="md:col-span-3">
-                    <p class="text-lg text-light-text mb-4">
-                        Welcome! I'm a Data Scientist at Ola Krutrim, with a background in Aerospace Engineering from the prestigious <a href="http://iitk.ac.in" target="_blank" rel="noopener noreferrer" class="text-brand-primary hover:underline">Indian Institute of Technology, Kanpur</a>, where I earned both my B.Tech and M.Tech degrees.
-                    </p>
-                    <p class="text-lg text-light-text">
-                        My professional journey has allowed me to contribute to exceptional teams at Arcana Analytics, Hilabs Inc., and HSBC. I am deeply interested in the practical application and development of cutting-edge AI technologies.
-                    </p>
-                </div>
-                <div class="md:col-span-2">
-                    <h3 class="text-xl font-semibold text-white mb-4">Core Interests</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="bg-dark-card border border-dark-border text-brand-primary py-2 px-4 rounded-lg text-sm font-medium">Machine Learning</span>
-                        <span class="bg-dark-card border border-dark-border text-brand-primary py-2 px-4 rounded-lg text-sm font-medium">Large Language Models</span>
-                        <span class="bg-dark-card border border-dark-border text-brand-primary py-2 px-4 rounded-lg text-sm font-medium">Multimodal Models</span>
-                        <span class="bg-dark-card border border-dark-border text-brand-primary py-2 px-4 rounded-lg text-sm font-medium">Foundation Models</span>
-                        <span class="bg-dark-card border border-dark-border text-brand-primary py-2 px-4 rounded-lg text-sm font-medium">Computer Vision</span>
+                <a href="#publications" class="source-card">
+                    <div class="source-card-top">
+                        <div class="source-domain"><i class="fa-solid fa-shield-halved" style="color: #22d3ee;"></i> amlc.internal</div>
+                        <span class="source-index-badge">4</span>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="py-20 md:py-32 reveal">
-            <h2 class="text-3xl font-bold text-center text-white mb-12">Professional Journey</h2>
-            <div class="relative max-w-2xl mx-auto">
-                <div class="absolute left-1/2 w-0.5 h-full bg-dark-border transform -translate-x-1/2"></div>
-                <!-- Timeline Item: Krutrim -->
-                <div class="relative mb-8">
-                    <div class="absolute w-4 h-4 bg-brand-primary rounded-full mt-1.5 -left-1.5 border-4 border-dark-bg"></div>
-                    <div class="ml-6 bg-dark-card p-6 rounded-lg border border-dark-border shadow-md">
-                        <h3 class="text-xl font-bold text-white">Data Scientist</h3>
-                        <p class="text-brand-secondary font-semibold">Ola Krutrim</p>
-                        <p class="text-medium-text mt-2">Currently developing innovative AI-driven solutions.</p>
+                    <div class="source-title">AMLC 2026 • PRISM & SAGE Guardrails</div>
+                </a>
+                <a href="#experience" class="source-card">
+                    <div class="source-card-top">
+                        <div class="source-domain"><i class="fa-solid fa-brain" style="color: #10b981;"></i> krutrim.ai</div>
+                        <span class="source-index-badge">5</span>
                     </div>
-                </div>
-                <!-- Timeline Item: Arcana Analytics -->
-                 <div class="relative mb-8">
-                    <div class="absolute w-4 h-4 bg-brand-primary rounded-full mt-1.5 -left-1.5 border-4 border-dark-bg"></div>
-                    <div class="ml-6 bg-dark-card p-6 rounded-lg border border-dark-border shadow-md">
-                        <h3 class="text-xl font-bold text-white">Data Scientist</h3>
-                        <p class="text-brand-secondary font-semibold">Arcana Analytics</p>
-                        <p class="text-medium-text mt-2">Developed a factors based investing product with 38% R-Squired value</p>
+                    <div class="source-title">Ola Krutrim • Chitrarth VLM (22 Indic Lgs)</div>
+                </a>
+                <a href="#education" class="source-card">
+                    <div class="source-card-top">
+                        <div class="source-domain"><i class="fa-solid fa-graduation-cap" style="color: #06b6d4;"></i> iitk.ac.in</div>
+                        <span class="source-index-badge">6</span>
                     </div>
-                </div>
-                <!-- Timeline Item: Hilabs Inc. -->
-                 <div class="relative mb-8">
-                    <div class="absolute w-4 h-4 bg-brand-primary rounded-full mt-1.5 -left-1.5 border-4 border-dark-bg"></div>
-                    <div class="ml-6 bg-dark-card p-6 rounded-lg border border-dark-border shadow-md">
-                        <h3 class="text-xl font-bold text-white">Data Scientist</h3>
-                        <p class="text-brand-secondary font-semibold">Hilabs Inc.</p>
-                        <p class="text-medium-text mt-2">Led multiple product developments related to Anomaly Detection and AI based Provider roster ingestion</p>
-                    </div>
-                </div>
-                <!-- Timeline Item: HSBC -->
-                 <div class="relative mb-8">
-                    <div class="absolute w-4 h-4 bg-brand-primary rounded-full mt-1.5 -left-1.5 border-4 border-dark-bg"></div>
-                    <div class="ml-6 bg-dark-card p-6 rounded-lg border border-dark-border shadow-md">
-                        <h3 class="text-xl font-bold text-white">Assistant Manager</h3>
-                        <p class="text-brand-secondary font-semibold">HSBC</p>
-                        <p class="text-medium-text mt-2">Built products for Chief Data Office and Data Governance</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-20 md:py-32 reveal">
-            <h2 class="text-3xl font-bold text-center text-white mb-12">Projects</h2>
-            <div class="text-center">
-                <p class="text-lg text-light-text mb-6">My project details are coming soon. For now, please explore my work on GitHub.</p>
-                <a href="https://github.com/shaharukhkhan4350" target="_blank" rel="noopener noreferrer" class="inline-block bg-brand-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-brand-secondary transition-transform transform hover:scale-105">
-                    View on GitHub
+                    <div class="source-title">IIT Kanpur • Dual Degree (BT-MT)</div>
                 </a>
             </div>
         </section>
-        
-        <!-- Publications Section -->
-        <section id="publications" class="py-20 md:py-32 reveal">
-            <h2 class="text-3xl font-bold text-center text-white mb-12">Publications</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Publication Placeholder 1 -->
-                <div class="bg-dark-card p-6 rounded-lg border border-dark-border transform hover:-translate-y-2 transition-transform duration-300" >
-                    <h3 class="text-lg font-bold text-white"><a href="https://arxiv.org/abs/2502.15392">Chitrarth: Bridging Vision and Language for a Billion People</a></h3>
-                    <p class="text-medium-text mt-2">NeurIPS, 2024</p>
-                    <p class="text-light-text mt-4">A vision language model for indian languages</p>
-                </div>
-                <!-- Publication Placeholder 2 -->
-                <div class="bg-dark-card p-6 rounded-lg border border-dark-border transform hover:-translate-y-2 transition-transform duration-300">
-                    <h3 class="text-lg font-bold text-white"><a href="https://aclanthology.org/2024.wmt-1.80/">Chitranuvad: Adapting Multi-lingual LLMs for Multimodal Translation</a></h3>
-                    <p class="text-medium-text mt-2">EMNLP, 2024</p>
-                    <p class="text-light-text mt-4">Model for machine translation considering the visual context</p>
-                </div>
-                <!-- Publication Placeholder 3 -->
-                <div class="bg-dark-card p-6 rounded-lg border border-dark-border transform hover:-translate-y-2 transition-transform duration-300">
-                    <h3 class="text-lg font-bold text-white"><a href="https://openreview.net/forum?id=CHrzyIKfPd">Chitrakshara: A Large Multilingual Multimodal Dataset for Indian languages</a></h3>
-                    <p class="text-medium-text mt-2">CVPR, 2025</p>
-                    <p class="text-light-text mt-4">Multilingual Multimodal dataset for indian languages</p>
-                </div>
+
+        <!-- Experience Feed -->
+        <section class="feed-section" id="experience">
+            <div class="feed-header">
+                <h2 class="feed-title">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Professional Experience</span>
+                </h2>
+                <span style="font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono);">7+ Years Experience</span>
             </div>
+
+            <!-- Amazon -->
+            <article class="card-item">
+                <div class="card-top">
+                    <div>
+                        <h3 class="card-role">Applied Scientist-II</h3>
+                        <div class="card-company">Amazon — Bangalore, India</div>
+                    </div>
+                    <span class="card-date current">Nov 2025 – Present</span>
+                </div>
+                <ul class="card-bullets">
+                    <li>Trained and deployed a runtime policy violation detection model to safeguard <strong>Alexa</strong> live user interactions</li>
+                    <li>Deployed a decoder classification model (<strong>Qwen3-Guard</strong>) for <strong>Alexa+</strong> (en_US) with <strong>&lt;40ms</strong> latency and <strong>95% precision</strong>; currently scaling to global markets</li>
+                    <li>Built an offline detection module automating retraining pipelines to maintain continuous model performance</li>
+                    <li>Architected an <strong>automated agent</strong> generating and annotating policy-aligned synthetic data</li>
+                </ul>
+                <div class="tag-cluster">
+                    <span class="tag-pill">Alexa+ Guardrails</span>
+                    <span class="tag-pill">Qwen3-Guard</span>
+                    <span class="tag-pill">Ultra Low-Latency (&lt;40ms)</span>
+                    <span class="tag-pill">Synthetic Data Agents</span>
+                    <span class="tag-pill">Continuous Retraining</span>
+                </div>
+            </article>
+
+            <!-- Ola Krutrim -->
+            <article class="card-item">
+                <div class="card-top">
+                    <div>
+                        <h3 class="card-role">Data Scientist-II</h3>
+                        <div class="card-company">Ola Krutrim — Bangalore, India</div>
+                    </div>
+                    <span class="card-date">Mar 2024 – Oct 2025</span>
+                </div>
+                <ul class="card-bullets">
+                    <li>Built <strong>Chitrarth</strong>, a multilingual vision-language model supporting <strong>10+ Indic languages</strong></li>
+                    <li>Developed <strong>BharatBench</strong>, a multimodal benchmark evaluating <strong>Indic language understanding</strong></li>
+                    <li>Fine-tuned <strong>VideoLLaMA3</strong> and <strong>Chitrarth</strong> for high-accuracy <strong>CCTV video understanding</strong></li>
+                    <li>Trained a lightweight image classifier detecting <strong>image orientation</strong> across 4 discrete angles</li>
+                    <li>Trained <strong>Chitrarth-vl2</strong>, an Indic VLM for 22 languages supporting <strong>OCR</strong>, <strong>JSON output</strong>, and video understanding</li>
+                    <li>Developed the <strong>MCP agents</strong> orchestration module for the <strong>Kruti application</strong></li>
+                    <li>Deployed a <strong>fraud detection system</strong> identifying spare part fraud across <strong>Ola Electric</strong> service centers</li>
+                    <li>Deployed a <strong>ResNet50</strong> <strong>NSFW classification model</strong> for content moderation in the <strong>Kruti application</strong></li>
+                    <li>Fine-tuned <strong>Phi-3.5</strong> and <strong>Qwen2.5-VL</strong> for <strong>document intelligence</strong> powering <strong>Ola Cabs</strong> document verification</li>
+                    <li>Trained a bilingual English-Indic <strong>tokenizer</strong> achieving state-of-the-art compression via <strong>SuperBPE</strong></li>
+                    <li>Built <strong>2-tower</strong> retrieval and <strong>DLRM</strong> ranking pipelines for <strong>Ola Foods</strong> and <strong>Groceries</strong></li>
+                </ul>
+                <div class="tag-cluster">
+                    <span class="tag-pill">Chitrarth VLM (22 Indic Lgs)</span>
+                    <span class="tag-pill">BharatBench</span>
+                    <span class="tag-pill">MCP Agents Orchestration</span>
+                    <span class="tag-pill">SuperBPE Tokenizer</span>
+                    <span class="tag-pill">Qwen2.5-VL</span>
+                    <span class="tag-pill">DLRM / 2-Tower RecSys</span>
+                </div>
+            </article>
+
+            <!-- Arcana -->
+            <article class="card-item">
+                <div class="card-top">
+                    <div>
+                        <h3 class="card-role">Data Scientist</h3>
+                        <div class="card-company">Arcana — Bangalore, India</div>
+                    </div>
+                    <span class="card-date">Aug 2023 – Mar 2024</span>
+                </div>
+                <ul class="card-bullets">
+                    <li>Generated <strong>sentiment scores</strong> for earnings call transcripts using <strong>FinBERT</strong></li>
+                    <li>Analyzed market factors across commodities, ETFs, options, currencies, momentum, beta, and treasury rates</li>
+                    <li>Built a <strong>factor-based financial model</strong> achieving an <strong>R-squared of 38%</strong> for asset return prediction</li>
+                </ul>
+                <div class="tag-cluster">
+                    <span class="tag-pill">FinBERT</span>
+                    <span class="tag-pill">Quantitative Factor Models</span>
+                    <span class="tag-pill">Market Factors (R² = 38%)</span>
+                </div>
+            </article>
+
+            <!-- HiLabs Inc. -->
+            <article class="card-item">
+                <div class="card-top">
+                    <div>
+                        <h3 class="card-role">Data Scientist-II</h3>
+                        <div class="card-company">HiLabs Inc. — Bangalore, India</div>
+                    </div>
+                    <span class="card-date">Nov 2020 – Aug 2023</span>
+                </div>
+                <ul class="card-bullets">
+                    <li>Built <strong>DRG prediction models</strong> combining <strong>BERT</strong> medical sentiment with <strong>YOLOv5</strong> chart extraction</li>
+                    <li>Led a <strong>10+ member team</strong> to develop an AI-based <strong>provider roster ingestion system</strong></li>
+                    <li>Managed a <strong>5+ member team</strong> to build <strong>ELIXIR-P</strong>, an <strong>anomaly detection</strong> and remediation engine using Spring Boot, RDBMS, Hadoop, Spark, and Solr</li>
+                    <li>Received <strong>Xtra Miler</strong> award for outstanding performance</li>
+                </ul>
+                <div class="tag-cluster">
+                    <span class="tag-pill">Healthcare AI</span>
+                    <span class="tag-pill">YOLOv5 & BERT</span>
+                    <span class="tag-pill">Team Leadership (10+ Engineers)</span>
+                    <span class="tag-pill">Xtra Miler Award</span>
+                </div>
+            </article>
+
+            <!-- HSBC -->
+            <article class="card-item">
+                <div class="card-top">
+                    <div>
+                        <h3 class="card-role">Assistant Manager</h3>
+                        <div class="card-company">HSBC — Bangalore, India</div>
+                    </div>
+                    <span class="card-date">Jul 2018 – Nov 2020</span>
+                </div>
+                <ul class="card-bullets">
+                    <li>Built <strong>Alteryx workflows</strong> for <strong>data quality rules</strong> and developed a <strong>PII detection tool</strong></li>
+                    <li>Developed QBot, a TF-IDF <strong>data governance and benchmarking chatbot</strong>; received the <strong>Team Star</strong> award</li>
+                </ul>
+                <div class="tag-cluster">
+                    <span class="tag-pill">Banking CDO</span>
+                    <span class="tag-pill">PII Security</span>
+                    <span class="tag-pill">Data Governance</span>
+                    <span class="tag-pill">Team Star Award</span>
+                </div>
+            </article>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 md:py-32 reveal">
-            <h2 class="text-3xl font-bold text-center text-white mb-12">Get In Touch</h2>
-            <div class="max-w-lg mx-auto text-center">
-                 <p class="text-lg text-light-text mb-8">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision. Feel free to reach out.</p>
-                <div class="space-y-4">
-                    <a href="mailto:shaharukhkhan4350@gmail.com" class="flex items-center justify-center text-lg text-medium-text hover:text-brand-primary transition">
-                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        shaharukhkhan4350@gmail.com
+        <!-- Publications Feed -->
+        <section class="feed-section" id="publications">
+            <div class="feed-header">
+                <h2 class="feed-title">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                    <span>Research Publications</span>
+                </h2>
+                <span style="font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono);">8 Accepted & Preprints</span>
+            </div>
+
+            <!-- ICLR 2026 -->
+            <article class="pub-row">
+                <div class="pub-details">
+                    <a class="pub-title-link" href="https://openreview.net/forum?id=LmJoLn04iL" target="_blank">
+                        <span>IndicVisionBench: Benchmarking Cultural and Multilingual Understanding in VLMs</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
-                    <div class="flex items-center justify-center text-lg text-medium-text">
-                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                        +91 - 7275564486
+                    <div class="pub-meta">
+                        <span class="badge-venue iclr">ICLR 2026</span>
+                        <span class="pub-workshop-info">International Conference on Learning Representations</span>
                     </div>
-                     <div class="flex items-center justify-center text-lg text-medium-text">
-                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        Bengaluru, India
+                </div>
+            </article>
+
+            <!-- AAAI 2026 -->
+            <article class="pub-row">
+                <div class="pub-details">
+                    <a class="pub-title-link" href="https://ojs.aaai.org/index.php/AAAI/article/view/40524" target="_blank">
+                        <span>BhashaKritika: Building Synthetic Pretraining Data at Scale for Indic Languages</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <div class="pub-meta">
+                        <span class="badge-venue aaai">AAAI 2026</span>
+                        <span class="pub-workshop-info">AAAI Conference on Artificial Intelligence</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- AMLC 2026 - PRISM -->
+            <article class="pub-row">
+                <div class="pub-details">
+                    <span class="pub-title-link">
+                        <span>PRISM: Distilling LLM Reasoning into Compact Guardrail Models via Auxiliary Head Regularization</span>
+                    </span>
+                    <div class="pub-meta">
+                        <span class="badge-venue amlc">AMLC 2026</span>
+                        <span class="pub-workshop-info">Amazon Machine Learning Conference (Main Conference)</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- AMLC 2026 - SAGE -->
+            <article class="pub-row">
+                <div class="pub-details">
+                    <span class="pub-title-link">
+                        <span>SAGE: Hierarchical Content Safety via Prefill Readout of Decoder Guard Models</span>
+                    </span>
+                    <div class="pub-meta">
+                        <span class="badge-venue amlc">AMLC 2026</span>
+                        <span class="pub-workshop-info">Amazon Machine Learning Conference (Workshop Track)</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CVPR 2025 -->
+            <article class="pub-row">
+                <div class="pub-details">
+                    <a class="pub-title-link" href="https://openreview.net/forum?id=CHrzyIKfPd" target="_blank">
+                        <span>Chitrakshara: A Large Multilingual Multimodal Dataset for Indian languages</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <div class="pub-meta">
+                        <span class="badge-venue cvpr">CVPR 2025</span>
+                        <span class="pub-workshop-info">VLMs-4-All Workshop</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- NeurIPS 2024 -->
+            <article class="pub-row">
+                <div class="pub-details">
+                    <a class="pub-title-link" href="https://arxiv.org/abs/2502.15392" target="_blank">
+                        <span>Chitrarth: Bridging Vision and Language for a Billion People</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <div class="pub-meta">
+                        <span class="badge-venue neurips">NeurIPS 2024</span>
+                        <span class="pub-workshop-info">Multimodal Algorithmic Reasoning Workshop</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- EMNLP 2024 -->
+            <article class="pub-row">
+                <div class="pub-details">
+                    <a class="pub-title-link" href="https://aclanthology.org/2024.wmt-1.80/" target="_blank">
+                        <span>Chitranuvad: Adapting Multi-lingual LLMs for Multimodal Translation</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <div class="pub-meta">
+                        <span class="badge-venue emnlp">EMNLP 2024</span>
+                        <span class="pub-workshop-info">Workshop on Machine Translation (WMT)</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- arXiv 2025 -->
+            <article class="pub-row">
+                <div class="pub-details">
+                    <a class="pub-title-link" href="https://arxiv.org/abs/2511.04161" target="_blank">
+                        <span>Seeing Straight: Document Orientation Detection for Efficient OCR</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <div class="pub-meta">
+                        <span class="badge-venue arxiv">arXiv 2025</span>
+                        <span class="pub-workshop-info">Computer Vision & OCR Preprint</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Technical Skills Feed -->
+        <section class="feed-section" id="skills">
+            <div class="feed-header">
+                <h2 class="feed-title">
+                    <i class="fa-solid fa-microchip"></i>
+                    <span>Technical Expertise</span>
+                </h2>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Core Competencies & Tools</span>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <div class="skill-box-title">
+                        <i class="fa-solid fa-brain"></i>
+                        <span>Deep Learning & VLMs</span>
+                    </div>
+                    <div class="skill-tag-group">
+                        <span class="skill-chip featured">PyTorch</span>
+                        <span class="skill-chip featured">Transformers</span>
+                        <span class="skill-chip featured">Hugging Face</span>
+                        <span class="skill-chip featured">LLMs & VLMs</span>
+                        <span class="skill-chip featured">Fine-tuning</span>
+                        <span class="skill-chip">vLLM</span>
+                        <span class="skill-chip">SuperBPE</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-box-title">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Alignment & Agentic AI</span>
+                    </div>
+                    <div class="skill-tag-group">
+                        <span class="skill-chip featured">MCP (Model Context Protocol)</span>
+                        <span class="skill-chip">LangGraph</span>
+                        <span class="skill-chip">RAG</span>
+                        <span class="skill-chip">RLHF</span>
+                        <span class="skill-chip">DPO</span>
+                        <span class="skill-chip">GRPO</span>
+                        <span class="skill-chip">Qwen3-Guard</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-box-title">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Programming & APIs</span>
+                    </div>
+                    <div class="skill-tag-group">
+                        <span class="skill-chip featured">Python</span>
+                        <span class="skill-chip featured">SQL</span>
+                        <span class="skill-chip featured">FastAPI</span>
+                        <span class="skill-chip">C++</span>
+                        <span class="skill-chip">R</span>
+                        <span class="skill-chip">Git</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-box-title">
+                        <i class="fa-solid fa-server"></i>
+                        <span>RecSys & Infrastructure</span>
+                    </div>
+                    <div class="skill-tag-group">
+                        <span class="skill-chip">2-Tower & DLRM</span>
+                        <span class="skill-chip">Docker</span>
+                        <span class="skill-chip">PySpark</span>
+                        <span class="skill-chip">Hadoop & Spark</span>
+                        <span class="skill-chip">Solr</span>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Education Feed -->
+        <section class="feed-section" id="education">
+            <div class="feed-header">
+                <h2 class="feed-title">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Education</span>
+                </h2>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">IIT Kanpur</span>
+            </div>
+
+            <article class="card-item" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div style="width: 48px; height: 48px; border-radius: 12px; background: var(--bg-tag); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">Indian Institute of Technology (IIT) Kanpur</h3>
+                        <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600;">Dual Degree: Bachelor of Technology & Master of Technology (BT-MT)</p>
+                    </div>
+                </div>
+                <span class="card-date">2013 – 2018</span>
+            </article>
+        </section>
+
+        <!-- Footer -->
+        <footer style="margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); color: var(--text-muted); font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <p>© 2026 Shaharukh Khan • Applied Scientist-II</p>
+            <div style="display: flex; gap: 1rem;">
+                <a href="mailto:shaharukhkhan4350@gmail.com" style="color: var(--text-muted); text-decoration: none;"><i class="fa-solid fa-envelope"></i> Email</a>
+                <a href="https://www.linkedin.com/in/shaharukh-khan-a704188a/" target="_blank" style="color: var(--text-muted); text-decoration: none;"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/shaharukhkhan4350" target="_blank" style="color: var(--text-muted); text-decoration: none;"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+        </footer>
 
     </main>
 
-    <footer class="border-t border-dark-border py-8">
-        <div class="container mx-auto px-6 text-center text-medium-text">
-            <p>&copy; 2025 Shaharukh Khan. All Rights Reserved.</p>
-            <p class="text-sm mt-2">Crafted with Tailwind CSS</p>
-        </div>
-    </footer>
-
+    <!-- Client-side Interactive Logic (Perplexity Search Simulation & Theme Toggle) -->
     <script>
-        // JavaScript for mobile menu toggle and scroll animations
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+        const htmlRoot = document.documentElement;
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const header = document.getElementById('header');
+        function applyTheme(mode) {
+            htmlRoot.setAttribute('data-theme', mode);
+            if (mode === 'light') {
+                themeIcon.className = 'fa-solid fa-moon';
+                themeText.textContent = 'Light';
+            } else {
+                themeIcon.className = 'fa-solid fa-sun';
+                themeText.textContent = 'Dark';
+            }
+            localStorage.setItem('px_theme', mode);
+        }
 
-            // Toggle mobile menu
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+        const savedTheme = localStorage.getItem('px_theme') || 'dark';
+        applyTheme(savedTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            const current = htmlRoot.getAttribute('data-theme') || 'dark';
+            applyTheme(current === 'dark' ? 'light' : 'dark');
+        });
+
+        // Mobile Menu Toggle
+        const menuToggleBtn = document.getElementById('menuToggleBtn');
+        const sidebar = document.getElementById('sidebar');
+        if (menuToggleBtn) {
+            menuToggleBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
             });
-            
-            // Close mobile menu when a link is clicked
-            mobileMenu.addEventListener('click', (e) => {
-                if (e.target.tagName === 'A') {
-                    mobileMenu.classList.add('hidden');
-                }
-            });
+        }
 
-            // Change header style on scroll
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('shadow-lg');
+        // Perplexity AI Search & Knowledge Query Logic
+        const searchInput = document.getElementById('searchInput');
+        const aiAnswerCard = document.getElementById('aiAnswerCard');
+        const answerQueryTitle = document.getElementById('answerQueryTitle');
+        const answerBody = document.getElementById('answerBody');
+        const closeAnswerBtn = document.getElementById('closeAnswerBtn');
+
+        const knowledgeBase = {
+            amazon: {
+                title: 'Amazon & Alexa+ Safety Models',
+                answer: 'At <strong>Amazon</strong> (Nov 2025 – Present), Shaharukh serves as an <strong>Applied Scientist-II</strong> working on safety and runtime policy violation models for <strong>Alexa+</strong> <a class="cite-badge" href="#experience">[1]</a>. He deployed a decoder-based safety classifier (<strong>Qwen3-Guard</strong>) for the <code>en_US</code> locale achieving <strong>&lt;40ms</strong> production latency and <strong>95% precision</strong> <a class="cite-badge" href="#experience">[2]</a>. He also architected an automated agent generating policy-aligned synthetic data and built automated continuous retraining pipelines <a class="cite-badge" href="#publications">[3]</a>.'
+            },
+            vlm: {
+                title: 'Vision-Language Models (Chitrarth & BharatBench)',
+                answer: 'At <strong>Ola Krutrim</strong>, Shaharukh led core multimodal foundation model efforts <a class="cite-badge" href="#experience">[1]</a>. He built <strong>Chitrarth</strong>, a multilingual vision-language model covering 10+ and scaled to 22 Indic languages in <strong>Chitrarth-vl2</strong> with OCR and JSON parsing <a class="cite-badge" href="#publications">[2]</a>. He also created <strong>BharatBench</strong> for multimodal evaluation, fine-tuned <strong>VideoLLaMA3</strong> for CCTV analysis, and developed the <strong>SuperBPE</strong> tokenizer for high compression <a class="cite-badge" href="#publications">[3]</a>.'
+            },
+            papers: {
+                title: '8 Research Publications (ICLR, AAAI, AMLC, CVPR, NeurIPS)',
+                answer: 'Shaharukh has authored <strong>8 peer-reviewed conference papers and preprints</strong> <a class="cite-badge" href="#publications">[1]</a>: <strong>ICLR 2026</strong> (IndicVisionBench) <a class="cite-badge" href="https://openreview.net/forum?id=LmJoLn04iL">[2]</a>, <strong>AAAI 2026</strong> (BhashaKritika) <a class="cite-badge" href="https://ojs.aaai.org/index.php/AAAI/article/view/40524">[3]</a>, two <strong>AMLC 2026</strong> papers (PRISM on auxiliary head regularization and SAGE on prefill readout) <a class="cite-badge" href="#publications">[4]</a>, <strong>CVPR 2025</strong> (Chitrakshara), <strong>NeurIPS 2024</strong> (Chitrarth), <strong>EMNLP 2024</strong> (Chitranuvad), and an arXiv preprint on document orientation detection.'
+            },
+            safety: {
+                title: 'Guardrails, Alignment & Agentic AI',
+                answer: 'Shaharukh specializes in compact guardrail distillation, policy enforcement, and agent orchestration <a class="cite-badge" href="#skills">[1]</a>. His key contributions include <strong>Qwen3-Guard</strong> deployed with sub-40ms latency on Alexa+, <strong>MCP (Model Context Protocol)</strong> agent orchestration for Kruti <a class="cite-badge" href="#experience">[2]</a>, and post-training alignment techniques (RLHF, DPO, GRPO) <a class="cite-badge" href="#publications">[3]</a>.'
+            },
+            iitk: {
+                title: 'Academic Background: IIT Kanpur',
+                answer: 'Shaharukh holds a prestigious <strong>Dual Degree (Bachelor of Technology & Master of Technology, BT-MT)</strong> from the <strong>Indian Institute of Technology (IIT) Kanpur</strong> (2013–2018) <a class="cite-badge" href="#education">[1]</a>, with over 7 years of subsequent industry research experience at Amazon, Ola Krutrim, Arcana, HiLabs, and HSBC.'
+            }
+        };
+
+        function showAnswer(key, queryText) {
+            const data = knowledgeBase[key] || {
+                title: `Search: "${queryText}"`,
+                answer: `Found relevant research matches across experience and publications regarding <strong>${queryText}</strong>. Please see the detailed records below in the <a class="cite-badge" href="#experience">[Experience]</a> and <a class="cite-badge" href="#publications">[Publications]</a> feeds.`
+            };
+            answerQueryTitle.innerHTML = `<i class="fa-solid fa-sparkles"></i> ${data.title}`;
+            answerBody.innerHTML = data.answer;
+            aiAnswerCard.style.display = 'block';
+            aiAnswerCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        document.querySelectorAll('.prompt-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                const query = pill.getAttribute('data-query');
+                showAnswer(query, pill.textContent.trim());
+            });
+        });
+
+        // Submit button click
+        const searchSubmitBtn = document.getElementById('searchSubmitBtn');
+        if (searchSubmitBtn) {
+            searchSubmitBtn.addEventListener('click', () => {
+                if (searchInput.value.trim() !== '') {
+                    executeSearch(searchInput.value.trim());
                 } else {
-                    header.classList.remove('shadow-lg');
+                    showAnswer('amazon', 'Amazon Alexa+ Safety');
                 }
             });
+        }
 
-            // Scroll reveal animation
-            const revealElements = document.querySelectorAll('.reveal');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
+        // New Thread Button
+        const newThreadBtn = document.getElementById('newThreadBtn');
+        if (newThreadBtn) {
+            newThreadBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                aiAnswerCard.style.display = 'none';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                searchInput.focus();
+            });
+        }
+
+        // Copy Answer Button
+        const copyAnswerBtn = document.getElementById('copyAnswerBtn');
+        if (copyAnswerBtn) {
+            copyAnswerBtn.addEventListener('click', () => {
+                const text = answerBody.innerText;
+                navigator.clipboard.writeText(text).then(() => {
+                    copyAnswerBtn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Copied!</span>';
+                    setTimeout(() => {
+                        copyAnswerBtn.innerHTML = '<i class="fa-regular fa-copy"></i> <span>Copy</span>';
+                    }, 2000);
                 });
-            }, {
-                threshold: 0.1
             });
+        }
 
-            revealElements.forEach(el => {
-                observer.observe(el);
-            });
+        function executeSearch(query) {
+            const val = query.toLowerCase().trim();
+            let matchedKey = 'amazon';
+            if (val.includes('vlm') || val.includes('chit') || val.includes('vision') || val.includes('krutrim')) matchedKey = 'vlm';
+            else if (val.includes('paper') || val.includes('pub') || val.includes('iclr') || val.includes('aaai')) matchedKey = 'papers';
+            else if (val.includes('safe') || val.includes('guard') || val.includes('agent') || val.includes('mcp')) matchedKey = 'safety';
+            else if (val.includes('iit') || val.includes('edu') || val.includes('kanpur')) matchedKey = 'iitk';
+            showAnswer(matchedKey, query);
+        }
+
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && searchInput.value.trim() !== '') {
+                executeSearch(searchInput.value.trim());
+            }
+        });
+
+        // Skip the duplicate listener
+        const _dummy = true;
+        if (!_dummy) searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && searchInput.value.trim() !== '') {
+                const val = searchInput.value.toLowerCase().trim();
+                let matchedKey = 'amazon';
+                if (val.includes('vlm') || val.includes('chit') || val.includes('vision') || val.includes('krutrim')) matchedKey = 'vlm';
+                else if (val.includes('paper') || val.includes('pub') || val.includes('iclr') || val.includes('aaai')) matchedKey = 'papers';
+                else if (val.includes('safe') || val.includes('guard') || val.includes('agent') || val.includes('mcp')) matchedKey = 'safety';
+                else if (val.includes('iit') || val.includes('edu') || val.includes('kanpur')) matchedKey = 'iitk';
+                showAnswer(matchedKey, searchInput.value.trim());
+            }
+        });
+
+        closeAnswerBtn.addEventListener('click', () => {
+            aiAnswerCard.style.display = 'none';
         });
     </script>
 </body>
