@@ -1,31 +1,39 @@
-## Welcome to GitHub Pages
+# Shaharukh Khan — Research Portfolio
 
-You can use the [editor on GitHub](https://github.com/shaharukhkhan4350/shahrukhkhan.github.io/edit/master/README.md) to maintain and preview the content 
+Personal academic and industry research portfolio website of **Shaharukh Khan**, Applied Scientist-II at Amazon.
 
-### Markdown
+🌐 **Live Website**: [shaharukhkhan4350.github.io](https://shaharukhkhan4350.github.io/)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+---
 
-```markdown
-Syntax highlighted code block
+## 🔬 Focus Areas
+- Multimodal Vision-Language Models (VLMs)
+- Safety & Content Guardrails
+- Generative AI & LLM Systems
+- Indic & Multilingual NLP
 
-# Header 1
-## Header 2
-### Header 3
+---
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+## 📁 Repository Structure
+```
+├── index.html                   # Main portfolio website (Perplexity AI aesthetic)
+├── Shaharukh_Khan_Resume.pdf    # Latest curriculum vitae / resume
+├── images/                      # Profile photography & avatar assets
+│   ├── avatar1.jpg              # High-res profile avatar
+│   └── avatar.jpg               # Fallback avatar
+├── .nojekyll                    # GitHub Pages static site directive
+└── .gitignore                   # Ignore rules for OS & temporary files
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+---
 
-### Jekyll Themes
+## 🛠️ Local Development
+To preview the website locally:
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/shaharukhkhan4350/shahrukhkhan.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+```bash
+# Using Python
+python3 -m http.server 8080
+
+# Then open in your browser:
+# http://localhost:8080
+```
